@@ -109,12 +109,14 @@ function solve(p, o, i) {
         }
     }
 }
-//$("#a").append(JSON.stringify(ps[1])+"\n");
-//$("#a").append(JSON.stringify(ps[2])+"\n");
-//$("#a").append(JSON.stringify(ps[3])+"\n");
-setup();
-$("#c").append(JSON.stringify(sequences));
-//$("#d").append(JSON.stringify(ps[1])+"\n");
-//$("#d").append(JSON.stringify(ps[2])+"\n");
-//$("#d").append(JSON.stringify(ps[3])+"\n");
 
+$(function() {
+	//$("#a").append(JSON.stringify(ps[1])+"\n");
+	//$("#a").append(JSON.stringify(ps[2])+"\n");
+	//$("#a").append(JSON.stringify(ps[3])+"\n");
+	setup();
+	$("#c").append(JSON.stringify(sequences));
+	//$("#d").append(JSON.stringify(ps[1])+"\n");
+	//$("#d").append(JSON.stringify(ps[2])+"\n");
+	//$("#d").append(JSON.stringify(ps[3])+"\n");
+})();
