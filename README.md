@@ -10,3 +10,4 @@ Solves the retched cube puzzle. The one with a string of small cubes (I call a s
   |_|_|_|_||/
   |_|_|_|_|/
 ```
+see a demo here... http://esromlabs.github.io/cube-puzzlah/index.html
