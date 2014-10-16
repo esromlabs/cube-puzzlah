@@ -113,7 +113,7 @@ function solve(p, o, i) {
 $(function() {
 	//$("#a").append(JSON.stringify(ps[1])+"\n");
 	//$("#a").append(JSON.stringify(ps[2])+"\n");
-	$("#a").append(JSON.stringify(dir_name)+"\n");
+	$("#a").append(JSON.stringify(dir_name, null, " ")+"\n");
 	setup();
 	$("#c").append(JSON.stringify(sequences));
 	//$("#d").append(JSON.stringify(ps[1])+"\n");
