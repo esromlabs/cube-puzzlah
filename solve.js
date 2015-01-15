@@ -1,7 +1,7 @@
 // cube puzzle solver
 // http://jsfiddle.net/47T2U/4/
 
-// problem space
+// problem space, for the snake to crawl around in. 
 var ps = [[[1,1,1,1,1], [1,1,1,1,1], [1,1,1,1,1], [1,1,1,1,1], [1,1,1,1,1]], 
           [[1,1,1,1,1], [1,"0","0","0",1], [1,"0","0","0",1], [1,"0","0","0",1], [1,1,1,1,1]], 
           [[1,1,1,1,1], [1,"0","0","0",1], [1,"0","0","0",1], [1,"0","0","0",1], [1,1,1,1,1]], 
@@ -12,26 +12,34 @@ var ps = [[[1,1,1,1,1], [1,1,1,1,1], [1,1,1,1,1], [1,1,1,1,1], [1,1,1,1,1]],
 //var snake = "--+++-++-+++-+-++++-+-+-+--";
 var   snake = "--+++-++-+++-+-++++-+-+-+--";
 
+// dictionary of abreviated directions
 var dir_name = {  "u": "Up", "d":"Down",
                     "r": "Right", "l":"Left",
                     "f": "Forward", "b":"Back"
                  };
+// vectors pointing in each direction
 var dir = {  "u": [0,1,0], "d":[0,-1,0],
                     "r": [0,0,1], "l":[0,0,-1],
                     "f": [1,0,0], "b":[-1,0,0]
                  };
+// turn options for each direction
+// eg. if going "u" Up, then you could turn "brfl" Back, Right, Forward or Left
 var turn_dir = {  "u": "brfl", "d":"frbl",
                     "r": "ubdf", "l":"ufdb",
                     "f": "urdl", "b":"uldr"
                  };
+// the current sequence
 var sequence = "";
+// a list of successful sequences (so far)
 var sequences = [];
-
+// setup and run
 function setup() {
     var start_coord = [1, 1, 1];
     var orientation = "f";
     var solution = solve(start_coord, orientation, 0);
+    if (solution) { console.log(sequences);}
 }
+// vector addition
 function add(a, b) {
     var len = a.length, i = 0;
     var result = [];
@@ -41,7 +49,7 @@ function add(a, b) {
     return result;
 }
 // solve (recursive)
-// p = position, o = orientation, i = index into snake, s = solution sequence.
+// p = position, o = orientation, i = index into snake.
 function solve(p, o, i) {
     var turn_index = 0;
     var np; // next_position
@@ -70,6 +78,7 @@ function solve(p, o, i) {
             //$("#b").append(JSON.stringify(np));
             sequence += o;
             ret_val = solve(np, o, i+1);
+            // clean up on the way back out of recursion
             ps[p[0]][p[1]][p[2]] = "0";
             sequence = sequence.slice(0, -1);
             return ret_val;
